@@ -2,14 +2,14 @@
 
 ## Description
 
-This repository contains a project with a crawler to get Joinville Dancing Festival and save it in the database. This project was necessary, because there
-aren't better way to filter those information about classification and ranking. In this project you are able to search by:
+This repository contains a project with a crawler to get Joinville Dancing Festival and save it in the database. This project was necessary because there is no better way to filter that information about classification and ranking. In this project you are able to search by:
 - Group name
 - Genre
 - Subgenre
 - and Category
 
-As show below:
+As shows below:
+
 ![filters.png](docs/filters.png)
 
 ## Features
