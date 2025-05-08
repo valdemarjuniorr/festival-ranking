@@ -1,0 +1,12 @@
+<tr th:if="${rankings.size > 0}" th:each="rank: ${rankings}" class="hover:bg-gray-50 odd:bg-gray-50 even:bg-white">
+	<td th:text="${rank.groupCode() + ' - ' + rank.groupName()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.choreography()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.genre()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.subGenre()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.category()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.score()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${rank.result()}" class="px-4 py-2 text-sm"></td>
+</tr>
+<tr th:if="${rankings.size() == 0}">
+	<td colspan="7" class="px-4 py-2 text-sm text-center">Nenhum resultado encontrado.</td>
+</tr>

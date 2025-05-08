@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: festival-ranking
+
+  datasource:
+    url: jdbc:sqlite:./festival-ranking.db
+    driver-class-name: org.sqlite.JDBC
+
+  sql:
+    init:
+      mode: always
+  threads:
+    virtual:
+      enabled: true
+
+scraper:
+  url: "http://www.ifdj.com.br/2021/lista-do-resultado/festival--festival--festival--mostra-co-palcos-ab-2-chamad-2-chamad-aprovado-aprovado--aprovado--selecao-f-vaga-1%C2%B0-l-2024-1-8-2019-7-5-2024.html"
