@@ -10,7 +10,7 @@ This repository contains a project with a crawler to get Joinville Dancing Festi
 
 As shows below:
 
-![filters.png](docs/filters.png)
+![filters.png](docs%2Ffilters.png)
 
 ## Features
 - Java 24
@@ -40,6 +40,6 @@ shown [here](https://github.com/valdemarjuniorr/spring-boot-graalvm-performance-
 After starting the application, you need to collect the data clicking in the URL http://localhost:8080/process, then it will create a database file called `festival-ranking.db`. 
 After that, only access http://localhost:8080 and it will show the screen below:
 
-![home.png](docs/home.png)
+![home.png](docs/%2Fhome.png)
 
 And now you will be able to filter as you like!
