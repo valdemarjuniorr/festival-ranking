@@ -4,7 +4,7 @@
 	<td th:text="${rank.genre()}" class="px-4 py-2 text-sm"></td>
 	<td th:text="${rank.subGenre()}" class="px-4 py-2 text-sm"></td>
 	<td th:text="${rank.category()}" class="px-4 py-2 text-sm"></td>
-	<td th:text="${rank.score()}" class="px-4 py-2 text-sm"></td>
+	<td th:text="${#strings.replace(rank.score(), '.', ',')}" class="px-4 py-2 text-sm"></td>
 	<td th:text="${rank.result()}" class="px-4 py-2 text-sm"></td>
 </tr>
 <tr th:if="${rankings.size() == 0}">
