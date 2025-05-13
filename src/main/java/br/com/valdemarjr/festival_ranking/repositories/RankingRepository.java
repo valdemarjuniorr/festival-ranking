@@ -2,10 +2,16 @@ package br.com.valdemarjr.festival_ranking.repositories;
 
 import br.com.valdemarjr.festival_ranking.domain.Ranking;
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.ListCrudRepository;
 
 public interface RankingRepository extends ListCrudRepository<Ranking, Long> {
+
+  @Cacheable("rankings")
+  @Query("SELECT * FROM rankings ORDER BY score DESC")
+  List<Ranking> findAllOrderByScoreDesc();
 
   @Query("SELECT DISTINCT group_name FROM rankings ORDER BY group_name")
   List<String> findDistinctByGroupNameAndOrderByGroupName();

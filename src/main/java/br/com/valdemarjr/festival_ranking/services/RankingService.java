@@ -5,6 +5,10 @@ import br.com.valdemarjr.festival_ranking.controllers.RankingSearch;
 import br.com.valdemarjr.festival_ranking.repositories.RankingRepository;
 import br.com.valdemarjr.festival_ranking.domain.Ranking;
 import java.util.List;
+import java.util.Objects;
+
+import org.hibernate.annotations.Cache;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +24,7 @@ public class RankingService {
     rankingRepository.save(ranking);
   }
 
+  @Cacheable("ranking-filters")
   public RankingFilters findFilters() {
     return new RankingFilters(
         rankingRepository.findDistinctByGroupNameAndOrderByGroupName(),
@@ -30,10 +35,13 @@ public class RankingService {
   }
 
   public List<Ranking> findAll() {
-    return rankingRepository.findAll();
+    return rankingRepository.findAllOrderByScoreDesc();
   }
 
   public List<Ranking> findBy(RankingSearch search) {
+    if (Objects.nonNull(search) && search.isFilterEmpty()) {
+      return this.findAll();
+    }
     return rankingRepository.findAllBy(
         search.groupName(), search.genre(), search.subGenre(), search.category());
   }
