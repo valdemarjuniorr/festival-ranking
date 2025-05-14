@@ -66,7 +66,7 @@ public class ProcessController {
   @Scheduled(fixedDelay = 1000 * 60 * 60 * 4) // every 4 hours
   void scheduledProcess() throws IOException {
     log.info("Start collecting data from the scraper");
-//    process();
+    process();
     log.info("Finished!");
   }
 }
