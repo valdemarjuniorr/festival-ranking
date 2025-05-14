@@ -28,6 +28,8 @@ public interface RankingRepository extends ListCrudRepository<Ranking, Long> {
   @Query("SELECT DISTINCT result FROM rankings ORDER BY result")
   List<String> findDistinctByResultAndOrderByResult();
 
+  List<Ranking> findFirst200ByOrderByScoreDesc();
+
   @Query(
 """
         SELECT * FROM rankings

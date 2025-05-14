@@ -7,7 +7,6 @@ import br.com.valdemarjr.festival_ranking.domain.Ranking;
 import java.util.List;
 import java.util.Objects;
 
-import org.hibernate.annotations.Cache;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -34,13 +33,17 @@ public class RankingService {
         rankingRepository.findDistinctByResultAndOrderByResult());
   }
 
+  public List<Ranking> findFirstThousandRanking() {
+    return rankingRepository.findFirst200ByOrderByScoreDesc();
+  }
+
   public List<Ranking> findAll() {
     return rankingRepository.findAllOrderByScoreDesc();
   }
 
   public List<Ranking> findBy(RankingSearch search) {
     if (Objects.nonNull(search) && search.isFilterEmpty()) {
-      return this.findAll();
+      return this.findFirstThousandRanking();
     }
     return rankingRepository.findAllBy(
         search.groupName(), search.genre(), search.subGenre(), search.category());

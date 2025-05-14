@@ -4,7 +4,10 @@ import br.com.valdemarjr.festival_ranking.domain.Ranking;
 import br.com.valdemarjr.festival_ranking.services.RankingService;
 import java.io.IOException;
 import org.jsoup.Jsoup;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/process")
 public class ProcessController {
+
+  private static final Logger log = LoggerFactory.getLogger(ProcessController.class);
 
   @Value("${scraper.url}")
   private String url;
@@ -24,7 +29,7 @@ public class ProcessController {
 
   @GetMapping
   String process() throws IOException {
-     rankingService.clearRanking();
+    rankingService.clearRanking();
     var doc = Jsoup.connect(url).get();
     var tBodies = doc.getElementsByTag("tbody");
     var tBody = tBodies.get(2);
@@ -56,5 +61,12 @@ public class ProcessController {
                       result));
             });
     return "Process completed";
+  }
+
+  @Scheduled(fixedDelay = 1000 * 60 * 60 * 4) // every 4 hours
+  void scheduledProcess() throws IOException {
+    log.info("Start collecting data from the scraper");
+//    process();
+    log.info("Finished!");
   }
 }

@@ -20,7 +20,7 @@ public class RankingController {
   @GetMapping
   String home(Model model) {
     model.addAttribute("filters", rankingService.findFilters());
-    model.addAttribute("rankings", rankingService.findAll());
+    model.addAttribute("rankings", rankingService.findFirstThousandRanking());
     return "index";
   }
 

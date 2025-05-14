@@ -37,7 +37,13 @@ shown [here](https://github.com/valdemarjuniorr/spring-boot-graalvm-performance-
 
 ## How to use
 
-After starting the application, you need to collect the data clicking in the URL http://localhost:8080/process; Then it will create a database file called `festival-ranking.db`. 
+After starting the application, the data will be collected right way and then every 4 hours those data will be updated in the table. To force the collecting data you can execute the command below:
+
+```shell
+$ curl --request GET -sL \
+     --url 'http://localhost:8080/process'
+```
+Then it will create a database file called `festival-ranking.db`. 
 After that, only access http://localhost:8080 and it will show the screen below:
 
 ![home.png](docs/home.png)
