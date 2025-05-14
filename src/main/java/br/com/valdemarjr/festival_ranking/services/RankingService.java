@@ -45,4 +45,8 @@ public class RankingService {
     return rankingRepository.findAllBy(
         search.groupName(), search.genre(), search.subGenre(), search.category());
   }
+
+  public void clearRanking() {
+    rankingRepository.deleteAll();
+  }
 }

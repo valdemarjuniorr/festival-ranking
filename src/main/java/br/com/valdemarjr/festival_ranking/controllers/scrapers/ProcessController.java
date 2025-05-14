@@ -24,6 +24,7 @@ public class ProcessController {
 
   @GetMapping
   String process() throws IOException {
+     rankingService.clearRanking();
     var doc = Jsoup.connect(url).get();
     var tBodies = doc.getElementsByTag("tbody");
     var tBody = tBodies.get(2);
