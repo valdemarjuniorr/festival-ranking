@@ -49,21 +49,36 @@
 <body class="bg-gray-50 text-gray-800">
 
 <header class="bg-blue-800 text-white py-6">
-	<div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-		<div class="text-center md:text-left">
-			<h1 class="text-3xl md:text-4xl font-semibold">Festival de Dança de Joinville</h1>
-			<p class="text-lg md:text-lg mt-2">Selecionados 2025</p>
+	<div class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row items-center justify-between">
+			<div class="text-center md:text-left mb-4 md:mb-0">
+				<h1 class="text-3xl md:text-4xl font-semibold">Festival de Dança de Joinville</h1>
+				<p class="text-lg mt-2">Selecionados 2025</p>
+			</div>
+			<div class="flex space-x-6">
+				<a href="/reports" alt="Relatórios" title="Relatórios"
+					 class="text-white hover:text-yellow-400 flex flex-col items-center group">
+					<i class="fa-solid fa-chart-pie text-3xl"></i>
+					<span class="text-xs font-bold mt-1">Relatórios</span>
+				</a>
+				<a href="https://www.buymeacoffee.com/valdemarjuniorr" target="_blank" alt="Buy Me A Coffee" title="Buy Me A Coffee"
+					 class="text-white hover:text-yellow-400 flex flex-col items-center group">
+					<i class="fa-solid fa-mug-saucer fa-bounce text-3xl"></i>
+					<span class="text-xs font-bold mt-1">Buy me a coffee</span>
+				</a>
+			</div>
 		</div>
-		<a href="https://www.buymeacoffee.com/valdemarjuniorr" target="_blank" alt="Buy Me A Coffee" title="Buy Me A Coffee"
-			 class="mt-4 md:mt-0 text-white hover:text-yellow-400 flex flex-col items-center group">
-			<i class="fa-solid fa-mug-saucer fa-bounce text-3xl"></i>
-			<span class="text-xs font-bold mt-1">Buy me a coffee</span>
-		</a></div>
+	</div>
 </header>
-
 <!-- Main Content -->
 <main class="container mx-auto my-10 px-4">
-	<!-- Filters -->
+	<div class="mb-4 bg-blue-50 p-3 rounded-lg shadow-sm">
+		<div class="flex flex-col sm:flex-row justify-end items-center text-gray-600 space-y-1 sm:space-y-0">
+			<i class="fas fa-clock mr-2"></i>
+			<span class="text-sm font-medium">Última atualização:</span>
+			<span class="text-sm ml-2 font-bold text-blue-600" th:text="${processedAt}"/>
+		</div>
+	</div>  <!-- Filters -->
 	<section class="bg-white p-6 rounded-lg shadow-md">
 		<h2 class="text-xl font-semibold mb-4">Filtrar Resultados</h2>
 		<form th:action="@{/search}" th:method="post" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
